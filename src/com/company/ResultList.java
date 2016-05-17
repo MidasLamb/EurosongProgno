@@ -40,9 +40,6 @@ public class ResultList extends ParticipantList{
                 score += 20;
         }
 
-        if (pl.hasOwner() && pl.getOwner().getName().equals("Jordi"))
-            score = score/3;
-
         return score;
     }
 

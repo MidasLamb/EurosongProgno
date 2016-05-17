@@ -16,4 +16,12 @@ public class Country {
     public String toString(){
         return name + " (" + numberInSequence + ") ";
     }
+
+    public int getNumberInSequence(){
+        return numberInSequence;
+    }
+
+    public String getName(){
+        return name;
+    }
 }

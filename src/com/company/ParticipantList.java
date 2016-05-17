@@ -1,5 +1,8 @@
 package com.company;
 
+
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,17 +18,25 @@ public class ParticipantList {
         stringList = new ArrayList<String>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), "Cp1252"));
 
             String nextline = reader.readLine();
             while (nextline != null){
                 length++;
-                list.add(Main.countries.getCountry(Integer.parseInt(nextline)));
+                list.add(analyseLine(nextline));
                 stringList.add(nextline);
                 nextline = reader.readLine();
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private Country analyseLine(String line){
+        try{
+            return Main.countries.getCountry(Integer.parseInt(line));
+        } catch (Exception e){
+            return Main.countries.getCountry(line);
         }
     }
 
